@@ -84,10 +84,10 @@
 - **示範重點：** 示範如何使用 Recursive Agent 來處理需要分解的複雜任務
 - **目的：** 讓使用者了解 Subagent 的運作方式
 - **操作方式：**
-1. 開啟 Copilot Chat，切換 `RecursiveProcessor` Agent
-2. 輸入以下提示詞，讓 Agent 處理一個需要分解的任務
-   ```
-    對不同的 Node.js 應用程式 OAuth 2.0 實作模式進行獨立研究。
-    將每一種模式與目前的實作方式進行比較，並提出建議方案，同時列出各方案的優點與缺點
-   ```
-3. 觀察 Agent 如何將任務分解成子任務，並逐步完成整個任務的處理
+  1. 開啟 Copilot Chat，切換 `RecursiveProcessor` Agent
+  2. 輸入以下提示詞，讓 Agent 處理一個需要分解的任務
+      ```
+        Perform isolated research into different OAuth 2.0 implementation patterns for Node.js applications. Compare each against the current implementation and return a recommendation with pros and cons.
+      ```
+  3. 觀察 Agent 如何將任務分解成子任務，並逐步完成整個任務的處理
+      ![alt text](recursive-processor.png)
