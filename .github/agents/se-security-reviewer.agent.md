@@ -1,7 +1,7 @@
 ---
 name: 'SE: Security'
 description: 'Security-focused code review specialist with OWASP Top 10, Zero Trust, LLM security, and enterprise security standards'
-tools: ['search/codebase', 'edit/editFiles', 'search', 'read/problems']
+tools: ['search/codebase', 'search', 'read/problems']
 handoffs: 
   - label: Begin drafting plan to Fix Security Issues
     agent: agent
