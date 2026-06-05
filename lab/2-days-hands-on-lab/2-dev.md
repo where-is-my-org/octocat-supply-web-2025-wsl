@@ -28,10 +28,7 @@
 - **目的：** 透過 prompt file 協助開發重複性工作
 - **操作方式：**
     1. 切換到 `cart-page` 分支，選擇 `Agent` chat mode，並輸入 `/pytest-` 開始生成測試案例
-    2. 查看執行結果，並輸入 `為所有缺少的實體生成完整測試`
-
-        ![alt text](unit-test-prompt-result.png)
-    3. 查看生成的測試案例，並執行測試及查看測試覆蓋率
+    2. 查看生成的測試案例，並執行測試及查看測試覆蓋率
 
 ---
 
@@ -42,7 +39,7 @@
 - **操作方式：**
   1. 切換至 `cart-page` 分支
   2. 開啟 Copilot Chat，切換至 `Debug Mode Instructions` 模式
-  3. 輸入 `檢查購物車功能是否有錯誤`，查看 Copilot 生成的錯誤盤點及修復建議
+  3. 輸入 `Do not make any file changes. Review the shopping cart functionality, identify any errors, and provide suggestions for improvement.`，查看 Copilot 生成的錯誤盤點及修復建議
 
 #### 修復程式碼功能面向錯誤
 - **示範重點：** 利用 Copilot 的 custom agent 協助修復程式碼
@@ -50,7 +47,7 @@
 - **操作方式：**  
   1. 切換至 `login-page` 分支
   2. 開啟 Copilot Chat，切換至 `Debug Mode Instructions` 模式
-  3. 輸入 `目前使用者創建帳號可選擇未來日期，進行修復`，查看 Copilot 生成的修復建議及改善
+  3. 輸入 `Users can select a future date when creating an account. Fix the issue.`，查看 Copilot 生成的修復建議及改善
 
 ---
 ### 🔐 Lab 9 : 應用程式安全優化
@@ -60,14 +57,14 @@
 - **操作方式：**  
   1. 保留在 `cart-page` 分支
   2. 開啟 Copilot Chat，切換至 `Ask` 模式
-  3. 請 Copilot `#codebase 分析並檢查是否存在明顯的安全性弱點`
+  3. 請 Copilot `#codebase Review the application for obvious security vulnerabilities and provide suggestion.`
   4. 你應該會看到下列問題（視情況不同）：
       - 跨站腳本（XSS）
       - 指令注入
       - 不安全的 CORS 設定
       - 遺漏安全標頭
       - 不安全的驗證實作
-  5. 切換至 `Agent` 模式並與 Copilot 互動，請它 `請修復 ...` 修補其中一項
+  5. 切換至 `Agent` 模式並與 Copilot 互動，請它 `Fix ...` 修補其中一項
 
 #### 利用 custom agent 進行安全性審查並產生修復計畫
 - **示範重點：** 示範如何使用自訂 Agent 進行安全性審查並產生修復計畫
@@ -75,19 +72,22 @@
 - **操作方式：**
   1. 保留在 `cart-page` 分支
   2. 開啟 Copilot Chat，切換至 `Agent` 模式，選擇 `SE: Security` Agent
-  3. 請 Copilot `#codebase 分析並檢查是否存在明顯的安全性弱點`
-  4. 完成後會出現 `Begin drafting plan to Fix Security Issues` 的 handoff，點選後會看到 Copilot 根據審查結果產生的修復計畫，包含優先級分類和具體的程式碼修改建議
+  3. 請 Copilot `#codebase Review the application for obvious security vulnerabilities and provide suggestion.`
+  4. (Option) 完成後會出現 `Begin drafting plan to Fix Security Issues` 的 handoff，點選後會看到 Copilot 根據審查結果產生的修復計畫，包含優先級分類和具體的程式碼修改建議
 
 ---
 
-### 🔁 Lab 10 : 使用 Recursive Agent 處理大型任務
+### 🔁 Lab 10 : 使用 Recursive Agent 處理大型任務 (Preview Feature)
 - **示範重點：** 示範如何使用 Recursive Agent 來處理需要分解的複雜任務
 - **目的：** 讓使用者了解 Subagent 的運作方式
+- **注意事項**：
+  - Recursive Agent 是一個實驗性功能，目前處於 Preview 階段，可能會有不穩定的情況，系統可能會判斷「單模型直接完成」比「啟動多 agent 協作」更划算或更安全而不啟動 subagent 的使用
 - **操作方式：**
   1. 開啟 Copilot Chat，切換 `RecursiveProcessor` Agent
   2. 輸入以下提示詞，讓 Agent 處理一個需要分解的任務
       ```
-        Perform isolated research into different OAuth 2.0 implementation patterns for Node.js applications. Compare each against the current implementation and return a recommendation with pros and cons.
+      Perform isolated research into different OAuth 2.0 implementation patterns for Node.js applications. Compare each against the current implementation and return a recommendation with pros and cons.
       ```
-  3. 觀察 Agent 如何將任務分解成子任務，並逐步完成整個任務的處理
+  3. 若有出發會觀測到 Agent 將任務分解成子任務，並逐步完成任務處理
       ![alt text](recursive-processor.png)
+  
